@@ -70,12 +70,6 @@ A custom review can be passed through the same preprocessing pipeline, and the m
    model = pickle.load(open('model1.pkl', 'rb'))
    ```
 
-## 🚀 Future Improvements
-
-- Switch to TF-IDF vectorization
-- Try deep learning models (e.g., LSTM, BERT)
-- Create a simple web interface using Flask or Streamlit
-
 ## 💡 Credits
 
 - IMDB Dataset: [Kaggle IMDB Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
