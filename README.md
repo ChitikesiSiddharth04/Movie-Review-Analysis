@@ -1,7 +1,3 @@
-Here's a sample **README.md** content for your GitHub repository based on your sentiment analysis project using the IMDB dataset:
-
----
-
 # 🎬 IMDB Movie Review Sentiment Analysis
 
 This project is a **Natural Language Processing (NLP)** application that classifies IMDB movie reviews into positive or negative sentiments using machine learning models.
@@ -56,16 +52,6 @@ A custom review can be passed through the same preprocessing pipeline, and the m
 - `bow.pkl`: Pickled Bag of Words vocabulary
 - `sentiment_analysis.py` (or Jupyter notebook): Code file
 
-## ✅ Results
-
-| Model           | Accuracy |
-|----------------|----------|
-| GaussianNB      | ~X.XX%   |
-| MultinomialNB   | ~X.XX%   |
-| BernoulliNB     | **~X.XX%** ✅ |
-
-(*Replace X.XX% with actual accuracies from your outputs*)
-
 ## 🧠 How to Run
 
 1. Install dependencies:
@@ -94,7 +80,3 @@ A custom review can be passed through the same preprocessing pipeline, and the m
 
 - IMDB Dataset: [Kaggle IMDB Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
 - NLTK & Scikit-learn community
-
----
-
-Would you like me to generate a `requirements.txt` as well?
