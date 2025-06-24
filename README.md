@@ -2,6 +2,8 @@
 
 This project is a complete, deployable web application that performs sentiment analysis on movie reviews. It uses a machine learning model trained on the IMDB 50k Movie Review dataset to classify reviews as either "Positive" or "Negative". The frontend is built with a clean, modern, and dynamic UI that uses JavaScript to provide a seamless user experience.
 
+![Demo](https://i.imgur.com/your-demo-image.gif)  <!-- Replace with a GIF of your app! -->
+
 ## ✨ Features
 
 - **Accurate Sentiment Analysis:** Utilizes a `Bernoulli Naive Bayes` classifier trained on 50,000 movie reviews.
@@ -81,6 +83,10 @@ Open your browser and navigate to `http://127.0.0.1:5000` to use the application
 
 ---
 
+## ☁️ Deployment to Render
+
+This application is ready to be deployed for free on [Render](https://render.com/).
+
 ### 1. Create a GitHub Repository
 
 Push your project code to a new repository on GitHub.
@@ -99,3 +105,5 @@ Push your project code to a new repository on GitHub.
     -   **Build Command:** `./render-build.sh`
     -   **Start Command:** `gunicorn app:app`
 5.  Click **Create Web Service**.
+
+Render will automatically build and deploy your application. Once it's live, you'll get a public URL you can share with anyone!
