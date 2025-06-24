@@ -19,8 +19,7 @@ data.info()
 data.sentiment.value_counts()
 
 
-data.sentiment.replace('positive',1,inplace=True)
-data.sentiment.replace('negative',0,inplace=True)
+data['sentiment'] = data['sentiment'].replace({'positive': 1, 'negative': 0})
 data.head(10)
 
 data.review[0]
@@ -94,29 +93,4 @@ print("Multinomial = ",accuracy_score(testy,ypm))
 print("Bernoulli = ",accuracy_score(testy,ypb))
 
 pickle.dump(bnb,open('model1.pkl','wb'))
-
-rev =  """Terrible. Complete trash. Brainless tripe. Insulting to anyone who isn't an 8 year old fan boy. Im actually pretty disgusted that this movie is making the money it is - what does it say about the people who brainlessly hand over the hard earned cash to be 'entertained' in this fashion and then come here to leave a positive 8.8 review?? Oh yes, they are morons. Its the only sensible conclusion to draw. How anyone can rate this movie amongst the pantheon of great titles is beyond me.
-
-So trying to find something constructive to say about this title is hard...I enjoyed Iron Man? Tony Stark is an inspirational character in his own movies but here he is a pale shadow of that...About the only 'hook' this movie had into me was wondering when and if Iron Man would knock Captain America out...Oh how I wished he had :( What were these other characters anyways? Useless, bickering idiots who really couldn't organise happy times in a brewery. The film was a chaotic mish mash of action elements and failed 'set pieces'...
-
-I found the villain to be quite amusing.
-
-And now I give up. This movie is not robbing any more of my time but I felt I ought to contribute to restoring the obvious fake rating and reviews this movie has been getting on IMDb."""
-f1 = clean(rev)
-f2 = is_special(f1)
-f3 = to_lower(f2)
-f4 = rem_stopwords(f3)
-f5 = stem_txt(f4)
-
-bow,words = [],word_tokenize(f5)
-for word in words:
-    bow.append(words.count(word))
-#np.array(bow).reshape(1,3000)
-#bow.shape
-word_dict = cv.vocabulary_
-pickle.dump(word_dict,open('bow.pkl','wb'))
-
-inp = []
-for i in word_dict:
-    inp.append(f5.count(i[0]))
-y_pred = bnb.predict(np.array(inp).reshape(1,1000))
+pickle.dump(cv,open('bow.pkl','wb'))
