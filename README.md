@@ -1,76 +1,101 @@
-# 🎬 IMDB Movie Review Sentiment Analysis
+# 🎬 IMDB Movie Review Sentiment Analysis Web App
 
-This project is a **Natural Language Processing (NLP)** application that classifies IMDB movie reviews into positive or negative sentiments using machine learning models.
+This project is a complete, deployable web application that performs sentiment analysis on movie reviews. It uses a machine learning model trained on the IMDB 50k Movie Review dataset to classify reviews as either "Positive" or "Negative". The frontend is built with a clean, modern, and dynamic UI that uses JavaScript to provide a seamless user experience.
 
-## 📌 Overview
+## ✨ Features
 
-Using the **IMDB Movie Review Dataset**, this project builds and compares multiple Naive Bayes classifiers to perform sentiment analysis. It involves data preprocessing, feature extraction with Bag of Words (BoW), model training, and deployment using `pickle`.
+- **Accurate Sentiment Analysis:** Utilizes a `Bernoulli Naive Bayes` classifier trained on 50,000 movie reviews.
+- **Dynamic Frontend:** Single-page application experience built with vanilla JavaScript, HTML, and CSS. No page reloads are needed for analysis.
+- **Responsive Design:** A clean and modern UI that looks great on all screen sizes.
+- **Ready for Deployment:** Includes configuration for easy, free deployment on platforms like Render.
 
-## 🛠️ Technologies & Libraries
+## 🛠️ Tech Stack
 
-- Python 🐍
-- Pandas & NumPy
-- NLTK (stopwords, tokenization, stemming)
-- Scikit-learn (CountVectorizer, Naive Bayes models)
-- Regex
-- Pickle (for model serialization)
+- **Backend:** Python, Flask
+- **Machine Learning:** Scikit-learn, Pandas, NLTK
+- **Frontend:** HTML, CSS, JavaScript
+- **Deployment:** Gunicorn, Render
 
-## 📂 Dataset
+## 📂 File Structure
 
-- Dataset used: `IMDB Dataset.csv`
-- Format: Two columns — `review` (text), `sentiment` (positive/negative)
+```
+.
+├── app.py              # Main Flask application
+├── MRA.py              # Script to train the ML model
+├── model1.pkl          # Pickled trained BernoulliNB model
+├── bow.pkl             # Pickled CountVectorizer
+├── requirements.txt    # Python dependencies
+├── templates/
+│   └── index.html      # Frontend HTML, CSS, and JS
+├── .gitignore          # Files to be ignored by Git
+├── render-build.sh     # Build script for deployment
+└── README.md           # This file
+```
 
-## 📈 Model Workflow
+---
 
-1. **Preprocessing**:
-    - HTML tag removal
-    - Removal of special characters
-    - Lowercasing text
-    - Stopword removal
-    - Word stemming (using `SnowballStemmer`)
+## 🚀 Running Locally
 
-2. **Feature Extraction**:
-    - CountVectorizer with max 1000 features
+To run this project on your own machine, follow these steps.
 
-3. **Model Training**:
-    - Naive Bayes classifiers: `GaussianNB`, `MultinomialNB`, `BernoulliNB`
+### 1. Prerequisites
 
-4. **Evaluation**:
-    - Models compared using accuracy on test set
+- Python 3.8+
+- Git
 
-5. **Deployment**:
-    - Best model (`BernoulliNB`) and BoW vocabulary are saved using `pickle`
+### 2. Clone & Setup
 
-## 🔍 Sample Prediction
+```bash
+# Clone the repository
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
 
-A custom review can be passed through the same preprocessing pipeline, and the model can predict whether the sentiment is positive or negative.
+# Create and activate a virtual environment
+python3 -m venv venv
+source venv/bin/activate
 
-## 📁 Files
+# Install the dependencies
+pip install -r requirements.txt
+```
 
-- `IMDB Dataset.csv`: Input dataset
-- `model1.pkl`: Trained `BernoulliNB` model
-- `bow.pkl`: Pickled Bag of Words vocabulary
-- `sentiment_analysis.py` (or Jupyter notebook): Code file
+### 3. Get the Dataset & Train the Model
 
-## 🧠 How to Run
+The pre-trained model files (`model1.pkl` and `bow.pkl`) are already included in this repository. However, if you wish to retrain the model yourself, you'll need the original dataset.
 
-1. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1.  **Download the dataset** from [Kaggle: IMDB Dataset of 50K Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews).
+2.  Place the `IMDB Dataset.csv` file in the root of the project directory.
+3.  **Run the training script:**
+    ```bash
+    python MRA.py
+    ```
+    This will regenerate `model1.pkl` and `bow.pkl` based on the dataset.
 
-2. Run the script:
-   ```bash
-   python sentiment_analysis.py
-   ```
+### 4. Run the Web App
 
-3. Use the saved model for predictions:
-   ```python
-   import pickle
-   model = pickle.load(open('model1.pkl', 'rb'))
-   ```
+```bash
+# Start the Flask development server
+python app.py
+```
 
-## 💡 Credits
+Open your browser and navigate to `http://127.0.0.1:5000` to use the application.
 
-- IMDB Dataset: [Kaggle IMDB Dataset](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
-- NLTK & Scikit-learn community
+---
+
+### 1. Create a GitHub Repository
+
+Push your project code to a new repository on GitHub.
+
+### 2. Deploy on Render
+
+1.  **Create a new Render Account** or log in.
+2.  On your dashboard, click **New +** and select **Web Service**.
+3.  **Connect your GitHub repository**.
+4.  Fill in the service details:
+    -   **Name:** Give your app a unique name (e.g., `movie-review-analysis-app`).
+    -   **Region:** Choose a region near you.
+    -   **Branch:** `main` (or your default branch).
+    -   **Root Directory:** Leave it blank.
+    -   **Runtime:** `Python 3`.
+    -   **Build Command:** `./render-build.sh`
+    -   **Start Command:** `gunicorn app:app`
+5.  Click **Create Web Service**.
